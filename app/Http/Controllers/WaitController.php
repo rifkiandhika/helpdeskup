@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class WaitController extends Controller
 {
-    public function index($id){
-        $data = Ticket::find($id);
-        return view("/Menu/Respon", compact ('data'));
+    public function index(){
+        $data["tickets"] = Ticket::all();
+        return view("/Menu/Respon", $data );
     }
 }

@@ -48,11 +48,14 @@ class TicketController extends Controller
     }
 
     public function status($id){
-        Ticket::find($id);
-        $data = Ticket::find($id);
-        return back()->with("Ticket.update", compact('data'));
+        Ticket::find($id)->update([
+            'status_ticket'=>'Direspon'
+            ]);
+        return back()->with("tickets.status");
 
     }
+
+    
     
 
    

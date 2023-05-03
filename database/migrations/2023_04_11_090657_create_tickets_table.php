@@ -16,7 +16,7 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->string('keluhan');
-            $table->enum('status_ticket', ['Direspon','Selesai','Menunggu...'])->default('Menunggu...');
+            $table->enum('status_ticket', ['Direspon','Selesai','Menunggu'])->default('Menunggu');
             $table->enum('konfirmasi', ['Konfirmasi','Masukan Pesan','Ticket Selesai'])->default('Konfirmasi');
             $table->string('keterangan');
             $table->string('tingkat_kesulitan');
