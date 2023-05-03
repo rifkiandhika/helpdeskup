@@ -51,6 +51,9 @@ class TicketController extends Controller
         Ticket::find($id)->update([
             'status_ticket'=>'Direspon'
             ]);
+            Ticket::find($id)->update([
+                'status_ticket'=>'Selesai'
+                ]);    
         return back()->with("tickets.status");
 
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CLController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReportController;
@@ -62,7 +63,8 @@ Route::middleware("auth")->group(function(){
     
     // menu view
     Route::get('/Karyawan', [KaryawanController::class, "index"]);
-    Route::get('/client', [KaryawanController::class, "client"]);
+    Route::get('Menu/clientlogin', [CLController::class, "index"]);
+    Route::get('/client', [CLController::class, "client"]);
     Route::get('/Proses', [ProssesController::class, "index"]);
     Route::get('/Sukses', [SuksesController::class, "index"]);
     Route::get('/Respon', [WaitController::class, "index"]);

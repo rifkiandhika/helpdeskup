@@ -68,7 +68,7 @@
 
                         @endif
                         @if ($Ticket->status_ticket == "Selesai")
-                        <td><a class="btn btn-success">{{$Ticket->status_ticket}}</a></td>
+                        <td><a href="btn btn-success">{{$Ticket->status_ticket}}</a></td>
 
                         @endif
                         <!-- <td>{{$Ticket->konfirmasi}}</td> -->

@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function index(){
         
-        $data = Ticket::count();
+        $data = Ticket::where('status_ticket','Menunggu')->count();
         $proses = Ticket::where('status_ticket','Direspon')->count();
         $success = Ticket::where('status_ticket','Selesai')->count();
         $user = User::count();

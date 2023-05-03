@@ -17,7 +17,12 @@ class LoginController extends Controller
             return back()->with("error", "Email/Password Salah");
         }
 
-        return redirect("/dashboard");
+        if(Auth::user()->divisi == "IT"){
+            return redirect('/dashboard');
+            }
+            if(Auth::user()->divisi == "user"){
+            return redirect('/Menu/clientlogin');
+            }
     }
 
     public function logout(){

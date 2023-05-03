@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ProssesController extends Controller
 {
     public function index(){
-        $data["tickets"] = Ticket::all();
-        return view("Menu/Proses", $data);
+        $data ["tickets"] = Ticket::where('status_ticket','Direspon')->get();
+        return view("Menu/Proses", $data, compact('data'));
     }
 }
