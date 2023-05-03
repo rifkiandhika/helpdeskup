@@ -41,7 +41,10 @@
             <!-- small box -->
             <div class="small-box  bg-info bg-warning">
               <div class="inner ">
-                <h3>10</h3>
+                <h3>
+               {{$data}}
+                </h3>
+                
 
                 <p>Menunggu Respon..</p>
               </div>
@@ -56,7 +59,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>0<sup style="font-size: 20px"></sup></h3>
+                <h3>
+                {{$proses}}
+                <sup style="font-size: 20px"></sup></h3>
 
                 <p>Proses Pengerjaan</p>
               </div>
@@ -71,7 +76,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>1</h3>
+                <h3>{{$success}}</h3>
 
                 <p>Ticket Sukses</p>
               </div>
@@ -86,12 +91,12 @@
             <!-- small box -->
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3>3</h3>
+                <h3>{{$user}}</h3>
 
                 <p>Karyawan</p>
               </div>
               <div class="icon">
-                <i class="nav-icon fas fa-user-circle"></i>
+                <i class="nav-icon fas fa-users"></i>
               </div>
               <a href="/Karyawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>

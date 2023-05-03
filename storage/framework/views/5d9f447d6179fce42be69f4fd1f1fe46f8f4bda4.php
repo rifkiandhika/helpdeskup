@@ -35,60 +35,63 @@
                   <table class="table table-bordered">
                     <thead>
 
-                    <!-- Modal -->
-                    <button type="button" class="btn btn-success " data-toggle="modal" data-target="#exampleModal" >
-                      Tambah Ticket +
-                    </button>
+                   <div>
+                          <!-- Modal -->
+                          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" >
+                            Tambah Ticket +
+                          </button>
 
+                          <hr>
                      
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModallabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Form Tambah Ticket</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      </button>
-                    </div>
-                    
-                    <div class="modal-body">
-                      <form action="/insert_data" method="post" enctype="multipart/form-data">
-                         <?php echo csrf_field(); ?>
-                         <div class="form-group">
-                           <label for="keluhan" class="col-form-label">Keluhan</label>
-                           <input type="text" class="form-control" name="keluhan" id="keluhan" placeholder="Masukan Keluhan">
-                         </div>
-                         <div class="form-group">
-                           <label for="message-text" class="col-form-label">Keterangan</label>
-                           <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Masukan Keterangan dan Tempat"></textarea>
-                         </div>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModallabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Form Tambah Ticket</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                </button>
+                              </div>
+                              
+                              <div class="modal-body">
+                                <form action="/insert_data" method="post" enctype="multipart/form-data">
+                                  <?php echo csrf_field(); ?>
+                                  <div class="form-group">
+                                    <label for="keluhan" class="col-form-label">Keluhan</label>
+                                    <input type="text" class="form-control" name="keluhan" id="keluhan" placeholder="Masukan Keluhan">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Keterangan</label>
+                                                <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Masukan Keterangan dan Tempat"></textarea>
+                                              </div>
 
-                         <select id="tingkat_kesulitan" class="form-control" name="tingkat_kesulitan">
-                         <option selected>Tingkat Kesulitan</option>
-                            <option>Tinggi</option>
-                            <option>Menengah</option>
-                            <option>Sedang</option>
-                         </select> 
+                                    <select id="tingkat_kesulitan" class="form-control" name="tingkat_kesulitan">
+                                    <option selected>Tingkat Kesulitan</option>
+                                        <option>Tinggi</option>
+                                        <option>Menengah</option>
+                                        <option>Sedang</option>
+                                    </select> 
 
-                         <select id="tempat" class="form-control mt-4" name="tempat">
-                         <option selected>Masukan Lokasi </option>
-                            <option>Pondok Kacang</option>
-                            <option>Meruya</option>
-                            <option>Cikande</option>
-                         </select> 
+                                    <select id="tempat" class="form-control mt-4" name="tempat">
+                                    <option selected>Masukan Lokasi </option>
+                                        <option>Pondok Kacang</option>
+                                        <option>Meruya</option>
+                                        <option>Cikande</option>
+                                    </select> 
 
-                        <div class="form-group mt-4">
-                          <label for="exampleFormControlFile1">Masukan Gambar</label>
-                          <input type="file" name="image" class="form-control-file" id="image">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                     <button type="submit" class="btn btn-primary">Save</button>
-                    </div>     
-                  </div>
-               </div>
-            </form>
-          </div>
+                                  <div class="form-group mt-4">
+                                    <label for="exampleFormControlFile1">Masukan Gambar</label>
+                                    <input type="file" name="image" class="form-control-file" id="image">
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Save</button>
+                              </div>       
+                          </div>
+                      </div>
+                    </form>
+                   </div>
+                </div>
                     <br>
                     <br>
                       <tr>

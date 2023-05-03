@@ -226,7 +226,7 @@
           <li></li>
 
           <li class="nav-item">
-            <a href="/dashboard" class="nav-link active">
+            <a href="/dashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard

@@ -364,7 +364,7 @@
                 <div class="icon">
                     <i class="nav-icon fas fa-user-circle"></i>
                 </div>
-                <a href="/Karyawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">.</a>
                 </div>
             </div>
             <!-- ./col -->

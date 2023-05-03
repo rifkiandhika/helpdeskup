@@ -53,7 +53,7 @@ Route::middleware("auth")->group(function(){
     Route::post('/insert_data', [TicketController::class, "insert_data"]);
     Route::get('/tickets/edit/{id}',[TicketController::class, "edit"]);
     Route::get('/tickets/detail/{id}',[TicketController::class, "detail"]);
-    Route::get('/Ticket/status/{id}',[TicketController::class, "status"]);
+    Route::get('/tickets/status/{id}/{status}',[TicketController::class, "status"]);
     Route::get('delete/{id}', [TicketController::class, "delete"]);
     
     // reportticket view

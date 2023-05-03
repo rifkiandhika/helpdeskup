@@ -33,7 +33,7 @@
       <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                  <table class="table table-bordered">
+                  <table class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>No</th>
