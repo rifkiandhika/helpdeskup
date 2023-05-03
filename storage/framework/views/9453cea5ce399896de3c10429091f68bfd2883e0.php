@@ -36,7 +36,7 @@
                     <thead>
 
                     <!-- Modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" >
                       Tambah Ticket +
                     </button>
 

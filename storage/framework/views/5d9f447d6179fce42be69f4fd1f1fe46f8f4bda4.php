@@ -115,7 +115,18 @@
                         <td><?php echo e($Ticket->tingkat_kesulitan); ?></td>
                         <td><?php echo e($Ticket->tempat); ?></td>
 
-                        <td><a href="/tickets/status/<?php echo e($Ticket->id); ?>" class="btn btn-warning" onclick="return confirm('Respon laporan?')"><?php echo e($Ticket->status_ticket); ?></a></td>
+                        <?php if($Ticket->status_ticket == "Menunggu"): ?>
+                        <td><a href="/tickets/status/<?php echo e($Ticket->id); ?>/Proses" class="btn btn-warning" onclick="return confirm('Respon laporan?')"><?php echo e($Ticket->status_ticket); ?></a></td>
+
+                        <?php endif; ?>
+                        <?php if($Ticket->status_ticket == "Direspon"): ?>
+                        <td><a href="/tickets/status/<?php echo e($Ticket->id); ?>/Selesai" class="btn btn-primary" onclick="return confirm('Selesaikan laporan?')"><?php echo e($Ticket->status_ticket); ?></a></td>
+
+                        <?php endif; ?>
+                        <?php if($Ticket->status_ticket == "Selesai"): ?>
+                        <td><a class="btn btn-success"><?php echo e($Ticket->status_ticket); ?></a></td>
+
+                        <?php endif; ?>
                          
                         <!-- <td><?php echo e($Ticket->konfirmasi); ?></td> -->
                         <td><?php echo e($Ticket->created_at); ?></td>
