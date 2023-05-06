@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ticket;
 use App\Models\User;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -15,26 +16,41 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $data["tickets"] = Ticket::all();
+        $data["tickets"] = Ticket::paginate(10);
         return view("/Ticket/index", $data);
     }
 
     public function insert_data(Request $request)
     {
         $data=$request->validate([
-            'keluhan' => 'required',
+            'keluhan' => 'required|max:255',
             'keterangan' => 'required',
             'tingkat_kesulitan'=> 'required',
             'tempat'=> 'required',
-            'image'=> 'required'
+            'image'=> 'image|file'
         ]);
-        ($data);
+        if ($files = $request->file('image')) {
+            $extension = $files->getClientOriginalExtension();
+            $name = hash('sha256', time()) . '.' . $extension;
+            $files->move('gambarticket', $name);
+            Ticket::create([
+                'keluhan'=> $request->keluhan,
+                'keterangan'=> $request->keterangan,
+                'tingkat_kesulitan'=> $request->tingkat_kesulitan,
+                'tempat'=> $request->tempat,
+                'image'=> $name,
+                'user_id'=>$request->user,
+                'created_at'=> now()
+            ]);
+            return back()->with('status', 'Data Berhasil Dikirim');
+
+        }
         Ticket::create([
             'keluhan'=> $request->keluhan,
             'keterangan'=> $request->keterangan,
             'tingkat_kesulitan'=> $request->tingkat_kesulitan,
             'tempat'=> $request->tempat,
-            'image'=> $request->image,
+            'user_id'=>$request->user,
             'created_at'=> now()
         ]);
         return back()->with('status', 'Data Berhasil Dikirim');

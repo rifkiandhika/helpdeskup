@@ -18,10 +18,11 @@ class CreateTicketsTable extends Migration
             $table->string('keluhan');
             $table->enum('status_ticket', ['Direspon','Selesai','Menunggu'])->default('Menunggu');
             $table->enum('konfirmasi', ['Konfirmasi','Masukan Pesan','Ticket Selesai'])->default('Konfirmasi');
-            $table->string('keterangan');
+            $table->longText('keterangan');
             $table->string('tingkat_kesulitan');
             $table->string('tempat');
-            $table->string('image');
+            $table->longText('image')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

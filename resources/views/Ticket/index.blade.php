@@ -10,6 +10,7 @@
 @endsection
 @section("content")
 <!-- Content Header (Page header) -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
 <div class="content-header">
       <div class="container-fluid">
@@ -32,8 +33,7 @@
       <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                  <table class="table table-bordered">
-                    <thead>
+                  
 
                    <div>
                           <!-- Modal -->
@@ -55,6 +55,7 @@
                               <div class="modal-body">
                                 <form action="/insert_data" method="post" enctype="multipart/form-data">
                                   @csrf
+                                  <input type="hidden" name="user" id="user" value="{{ Auth::user()->id }}">
                                   <div class="form-group">
                                     <label for="keluhan" class="col-form-label">Keluhan</label>
                                     <input type="text" class="form-control" name="keluhan" id="keluhan" placeholder="Masukan Keluhan">
@@ -66,34 +67,34 @@
 
                                     <select id="tingkat_kesulitan" class="form-control" name="tingkat_kesulitan">
                                     <option selected>Tingkat Kesulitan</option>
-                                        <option>Tinggi</option>
-                                        <option>Menengah</option>
-                                        <option>Sedang</option>
+                                        <option value="Tinggi">Tinggi</option>
+                                        <option value="Menengah">Menengah</option>
+                                        <option value="Rendah">Rendah</option>
                                     </select> 
 
                                     <select id="tempat" class="form-control mt-4" name="tempat">
                                     <option selected>Masukan Lokasi </option>
-                                        <option>Pondok Kacang</option>
-                                        <option>Meruya</option>
-                                        <option>Cikande</option>
+                                        <option value="Pondok Kacang">Pondok Kacang</option>
+                                        <option value="Meruya">Meruya</option>
+                                        <option value="Cikande">Cikande</option>
                                     </select> 
 
                                   <div class="form-group mt-4">
-                                    <label for="exampleFormControlFile1">Masukan Gambar</label>
+                                    <label for="exampleFormControlFile1">Masukan Gambar(Optional)</label>
                                     <input type="file" name="image" class="form-control-file" id="image">
                                   </div>
                               </div>
                               <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-primary">Save</button>
+                              <button type="submit" class="btn btn-primary">Submit</button>
                               </div>       
                           </div>
                       </div>
                     </form>
                    </div>
                 </div>
-                    <br>
-                    <br>
+                <table class="display" id="myTable">
+                  <thead>
                       <tr>
                         <th>#</th>
                         <th>Keluhan</th>
@@ -101,12 +102,12 @@
                         <th>Tingkat Kesulitan</th>
                         <th>Tempat</th>
                         <th>Status</th>
-                        <!-- <th>Konfirmasi</th> -->
                         <th>Tanggal</th>
+                        <th>Pengaju</th>
                         <th style="width: 150px;">Action</th>
                       </tr>
                     </thead>
-                    <tbody>
+                      <tbody>
                       @foreach($tickets as $Ticket)
                       <tr>
                         <td>{{$Ticket->id}}</td>
@@ -127,22 +128,59 @@
                         <td><a class="btn btn-success">{{$Ticket->status_ticket}}</a></td>
 
                         @endif
-                         
-                        <!-- <td>{{$Ticket->konfirmasi}}</td> -->
                         <td>{{$Ticket->created_at}}</td>
+                        <td>{{$Ticket->users->nama}}</td>
                         <td>
                           <ul class="table-action">
                             <!-- <li><a href="/tickets/edit/{{$Ticket->id}}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a></li> -->
                             <li><a href="{{ url('delete/'.$Ticket->id)}}" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus ticket?')"><i class="fa fa-trash" ></i> Delete</a></li>
                             <li><a href="/tickets/detail/{{$Ticket->id}}" class="btn btn-success"><i class="fa fa-eye"></i> Detail</a></li>
+                            @if ($Ticket->image !== null)
+                            <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $Ticket->id }}">
+                              <i class="fa fa-image"></i> Tampilkan Gambar
+                            </button></li>  
+                            @endif
+                            
                           </ul>
                         </td>
                       </tr>
+                      <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal{{ $Ticket->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog" style="overflow: hidden;">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 w-100" id="exampleModalLabel">Gambar Ticket</h1>
+      </div>
+      <div class="modal-body col-lg-2">
+        <img src="{{ asset('gambarticket/'.$Ticket->image) }}" style="object-fit: cover;width: 750px;height: 500px">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
                       @endforeach
-                    </tbody>
-                  </table>
+                      </tbody>
+                </table>
                 </div>
             </div>
       </div>
     </section>
+    <script src="
+https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js
+"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script> 
+<script>
+  let table = new DataTable('#myTable', {
+    // options
+});
+</script>
+
     @endsection

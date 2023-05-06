@@ -23,20 +23,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [LoginController::class, "index"])->name("login");
+Route::group(['middleware' => 'guest'], function () {    
+    Route::get('/', [LoginController::class, "index"])->name("login");
  //register view
-Route::get('/Register',[RegisterController::class,"index"])->name("Register");
-Route::post('/register_data',[RegisterController::class, "register_data"]);
-
-
+    Route::get('/Register',[RegisterController::class,"index"])->name("Register");
+    Route::post('/register_data',[RegisterController::class, "register_data"]);
+});
 
 //route login-logout
 Route::post('/login/auth', [LoginController::class, "auth"]);
 Route::get('/logout', [LoginController::class, "logout"])->name("logout");
 
-Route::middleware("auth")->group(function(){
-    // dashboard view
+Route::group(['middleware' => 'auth'], function () {    // dashboard view
     Route::get('/dashboard', [DashboardController::class, "index"]);
     
     // users view

@@ -55,7 +55,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="/dashboard" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -189,7 +189,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="/dashboard" class="brand-link">
       <img src="{{asset('assets/dist/img/logoSBA.png')}}" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">IT HELPDESK</span>
     </a>
@@ -930,7 +930,6 @@
 <script src="{{asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('assets/dist/js/adminlte.js')}}"></script>
-<script src="{{asset('assets/dist/js/pages/dashboard.js')}}"></script>
+
 @yield("script")
-</body>
-</html>
+
