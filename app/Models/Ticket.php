@@ -22,6 +22,16 @@ class Ticket extends Model
      *
      * @var array
      */
+
+     protected $fillable = [
+        'id', 'keluhan','image','tingkat_kesulitan','created_at','tempat', "status_ticket", "keterangan", "user_id","divisi"
+     ];
+
+/**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'keluhan', 'status_ticket'
     ];

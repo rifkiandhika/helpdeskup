@@ -65,11 +65,11 @@ class TicketController extends Controller
 
     public function status($id){
         Ticket::find($id)->update([
-            'status_ticket'=>'Direspon'
+            'status_ticket'=>'Direspon',
+        Ticket::find($id)->update([
+            'status_ticket'=>'Selesai'
+        ])    
             ]);
-            Ticket::find($id)->update([
-                'status_ticket'=>'Selesai'
-                ]);    
         return back()->with("tickets.status");
 
     }
@@ -127,9 +127,9 @@ class TicketController extends Controller
 
 
     public function detail($id){
-        Ticket::find($id);
         $data = Ticket::find($id);
-        return view('Ticket.detail', compact('data'));
+        $data["tickets"] = Ticket::all();
+        return view('Ticket.detail',$data, compact('data'));
     }
 
     public function details($id){
@@ -137,7 +137,7 @@ class TicketController extends Controller
         $data["tickets"] = Ticket::all();
         $data = User::find($id);
         $data = Ticket::find($id);
-        return view('Ticket.detail', compact('data'));
+        return view('Ticket.detail',$data, compact('data'));
     }
 
     /**
@@ -149,7 +149,9 @@ class TicketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Ticket::find($id);
+        $data->update($request->all());
+        return redirect()->route('/Ticket');
     }
 
     /**

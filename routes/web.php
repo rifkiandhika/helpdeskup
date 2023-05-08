@@ -53,7 +53,8 @@ Route::group(['middleware' => 'auth'], function () {    // dashboard view
     Route::get('/tickets/edit/{id}',[TicketController::class, "edit"]);
     Route::get('/tickets/detail/{id}',[TicketController::class, "detail"]);
     Route::get('/tickets/status/{id}/{status}',[TicketController::class, "status"]);
-    Route::get('delete/{id}', [TicketController::class, "delete"]);
+    Route::post('/tickets/update/{id}', [TicketController::class, "update"]);
+    Route::get('/delete/{id}', [TicketController::class, "delete"]);
     
     // reportticket view
     Route::get('/Report', [ReportController::class, "index"]);

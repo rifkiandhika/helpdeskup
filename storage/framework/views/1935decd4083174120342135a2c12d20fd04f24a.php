@@ -1,14 +1,14 @@
 <title>Ticket</title>
-@extends("layouts.master")
-@section("css")
+
+<?php $__env->startSection("css"); ?>
 <style>
   /* .btn{
     color: white;
   } */
 
 </style>
-@endsection
-@section("content")
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection("content"); ?>
 <!-- Content Header (Page header) -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
@@ -49,6 +49,12 @@
                      
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModallabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
+                              <div class="row mb-3">
+                            <div class="col-sm-3">
+                              
+                              <input name="keluhan" type="text" class="form-control" placeholder="kategory" value="<?php echo e(isset($_GET['keluhan']) ? $_GET['keluhan'] : ''); ?>">
+                            </div>
+                          </div>
                               <div class="modal-content">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Form Tambah Ticket</h5>
@@ -60,8 +66,8 @@
                               
                               <div class="modal-body">
                                 <form action="/insert_data" method="post" enctype="multipart/form-data">
-                                  @csrf
-                                  <input type="hidden" name="user" id="user" value="{{ Auth::user()->id }}">
+                                  <?php echo csrf_field(); ?>
+                                  <input type="hidden" name="user" id="user" value="<?php echo e(Auth::user()->id); ?>">
                                   <div class="form-group">
                                     <label for="keluhan" class="col-form-label">Kategory</label>
                                     <select id="keluhan" class="form-control" name="keluhan">
@@ -119,38 +125,38 @@
                       </tr>
                     </thead>
                       <tbody>
-                      @foreach($tickets as $Ticket)
+                      <?php $__currentLoopData = $tickets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Ticket): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                       <tr>
-                        <td>{{$Ticket->id}}</td>
-                        <td>{{$Ticket->keluhan}}</td>
-                        <td>{{$Ticket->keterangan}}</td>
-                        <td>{{$Ticket->tingkat_kesulitan}}</td>
-                        <td>{{$Ticket->tempat}}</td>
+                        <td><?php echo e($Ticket->id); ?></td>
+                        <td><?php echo e($Ticket->keluhan); ?></td>
+                        <td><?php echo e($Ticket->keterangan); ?></td>
+                        <td><?php echo e($Ticket->tingkat_kesulitan); ?></td>
+                        <td><?php echo e($Ticket->tempat); ?></td>
 
-                        @if ($Ticket->status_ticket == "Menunggu")
-                        <td><a href="/tickets/status/{{$Ticket->id}}/Proses" class="btn btn-warning" onclick="return confirm('Respon laporan?')">{{$Ticket->status_ticket}}</a></td>
+                        <?php if($Ticket->status_ticket == "Menunggu"): ?>
+                        <td><a href="/tickets/status/<?php echo e($Ticket->id); ?>/Proses" class="btn btn-warning" onclick="return confirm('Respon laporan?')"><?php echo e($Ticket->status_ticket); ?></a></td>
 
-                        @endif
-                        @if ($Ticket->status_ticket == "Direspon")
-                        <td><a href="/tickets/status/{{$Ticket->id}}/Selesai" class="btn btn-primary" onclick="return confirm('Selesaikan laporan?')">{{$Ticket->status_ticket}}</a></td>
+                        <?php endif; ?>
+                        <?php if($Ticket->status_ticket == "Direspon"): ?>
+                        <td><a href="/tickets/status/<?php echo e($Ticket->id); ?>/Selesai" class="btn btn-primary" onclick="return confirm('Selesaikan laporan?')"><?php echo e($Ticket->status_ticket); ?></a></td>
 
-                        @endif
-                        @if ($Ticket->status_ticket == "Selesai")
-                        <td><a class="btn btn-success">{{$Ticket->status_ticket}}</a></td>
+                        <?php endif; ?>
+                        <?php if($Ticket->status_ticket == "Selesai"): ?>
+                        <td><a class="btn btn-success"><?php echo e($Ticket->status_ticket); ?></a></td>
 
-                        @endif
-                        <td>{{$Ticket->created_at}}</td>
-                        <td>{{$Ticket->users->nama}}</td>
+                        <?php endif; ?>
+                        <td><?php echo e($Ticket->created_at); ?></td>
+                        <td><?php echo e($Ticket->users->nama); ?></td>
                         <td>
                           <ul class="table-action">
-                            <!-- <li><a href="/tickets/edit/{{$Ticket->id}}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a></li> -->
-                            <li><a href="{{ url('delete/'.$Ticket->id)}}" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus ticket?')"><i class="fa fa-trash" ></i> Delete</a></li>
-                            <li><a href="/tickets/detail/{{$Ticket->id}}" class="btn btn-success"><i class="fa fa-eye"></i> Detail</a></li>
-                            @if ($Ticket->image !== null)
-                            <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $Ticket->id }}">
+                            <!-- <li><a href="/tickets/edit/<?php echo e($Ticket->id); ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a></li> -->
+                            <li><a href="<?php echo e(url('delete/'.$Ticket->id)); ?>" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus ticket?')"><i class="fa fa-trash" ></i> Delete</a></li>
+                            <li><a href="/tickets/detail/<?php echo e($Ticket->id); ?>" class="btn btn-success"><i class="fa fa-eye"></i> Detail</a></li>
+                            <?php if($Ticket->image !== null): ?>
+                            <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo e($Ticket->id); ?>">
                               <i class="fa fa-image"></i> Picture
                             </button></li>  
-                            @endif
+                            <?php endif; ?>
                             
                           </ul>
                         </td>
@@ -159,14 +165,14 @@
 
 
                       <!-- Modal -->
-                      <div class="modal fade" id="exampleModal{{ $Ticket->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog" style="overflow: hidden;">
+                      <div class="modal fade" id="exampleModal<?php echo e($Ticket->id); ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog" style="overflow: hidden;">
                         <div class="modal-dialog modal-lg" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
                               <h1 class="modal-title fs-5 w-100" id="exampleModalLabel">Gambar Ticket</h1>
                             </div>
                             <div class="modal-body col-lg-2">
-                              <img src="{{ asset('gambarticket/'.$Ticket->image) }}" style="object-fit: cover;width: 750px;height: 500px">
+                              <img src="<?php echo e(asset('gambarticket/'.$Ticket->image)); ?>" style="object-fit: cover;width: 750px;height: 500px">
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -177,7 +183,7 @@
 
 
 
-                      @endforeach
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                       </tbody>
                 </table>
                 </div>
@@ -194,4 +200,5 @@ https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js
 });
 </script>
 
-    @endsection
+    <?php $__env->stopSection(); ?>
+<?php echo $__env->make("layouts.master", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\helpdeskup-main\resources\views//Ticket/index.blade.php ENDPATH**/ ?>
