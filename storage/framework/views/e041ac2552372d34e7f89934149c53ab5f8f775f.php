@@ -11,76 +11,72 @@
 <?php $__env->startSection("content"); ?>
 <!-- Content Header (Page header) -->
 
-<div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Detail</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/Ticket">Home</a></li>
-              <li class="breadcrumb-item active">Detail</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+                
+    <br>
+    <br>
+        
+                    <!-- Main content -->
+                    <div class="invoice p-3 mb-3">
+                              <!-- title row -->
+                              <div class="row">
+                                <div class="col-12">
+                                  <h4>
+                                    <i class="fas fa-ticket-alt"></i> IT HELPDESK
+                                    <small class="float-right"></small>
+                                  </h4>
+                                </div>
+                                <!-- /.col -->
+                              </div>
+                    <!-- info row -->
+                    <div class="row invoice-info">
+                      <div class="col-sm-4 invoice-col">
+                        From
+                        <address>
+                          <strong><?php echo e(Auth::user()->nama); ?></strong><br>
+                          Divisi : <br>
+                          Jabatan : <br>
+                          Email : 
+                        </address>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-sm-4 invoice-col">
+                        To
+                        <address>
+                          <strong>John Doe</strong><br>
+                          795 Folsom Ave, Suite 600<br>
+                          San Francisco, CA 94107<br>
+                          Phone: (555) 539-1037<br>
+                          Email: john.doe@example.com
+                        </address>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-sm-4 invoice-col">
+                        <b>Invoice #007612</b><br>
+                        <br>
+                        <b>Order ID:</b> 4F3S8J<br>
+                        <b>Payment Due:</b> 2/22/2014<br>
+                        <b>Account:</b> 968-34567
+                      </div>
 
+                        <!-- Keluhan -->
+                      <div class="form-group">
+                        <strong>Keluhan User/Karyawan</strong><br>
+                        <label for="recipient-name" class="col-form-label"></label>
+                        <input  class="form-control" readonly value="<?php echo e($data->keluhan); ?>" name="keluhan" id="recipient-name">
+                      </div>
+
+                      <br>
+                      <br>
+
+                      <div >
+                        <strong>Keterangan Lengkap</strong><br>
+                        <label for="recipient-name" class="col-form-label"></label>
+                        <textarea  class="form-control" readonly value="<?php echo e($data->keluhan); ?>" name="keluhan" id="recipient-name"></textarea>
+                      </div>
+                      <!-- /.col -->
+                    </div>
+          </div>
     
-    <div class="modal-fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Details Ticket</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="/Ticket/details/<?php echo e($data->id); ?>" method="post">
-            <form action="User/details/<?php echo e($data->id); ?>">
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"></label>
-                    <input  class="form-control" readonly value="<?php echo e($data->nama); ?>" name="nama" id="recipient-name">
-                </div>
-            </form>   
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"></label>
-                    <input  class="form-control" readonly value="<?php echo e($data->keluhan); ?>" name="keluhan" id="recipient-name">
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"></label>
-                    <input type="text" class="form-control" readonly value="<?php echo e($data->keterangan); ?>" name="keterangan"  id="recipient-name">
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"></label>
-                    <input type="text" class="form-control" readonly value="<?php echo e($data->tingkat_kesulitan); ?>" name="tingkat_kesulitan" id="recipient-name">
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"></label>
-                    <input type="text" class="form-control" readonly value="<?php echo e($data->tempat); ?>" name="tempat" id="recipient-name">
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"></label>
-                    <input type="text" class="form-control" readonly value="<?php echo e($data->status_ticket); ?>" name="status" id="recipient-name">
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"></label>
-                    <input type="text" class="form-control" readonly value="<?php echo e($data->created_at); ?>" name="created_at" id="recipient-name">
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label"></label>
-                    <input type="text" class="form-control" value="<?php echo e($data->image); ?>" name="image" id="image">
-                </div> 
-                </form>
-            </div>
-                </div>
-            </div>
-            </div>
-
-   
-
 
 
 

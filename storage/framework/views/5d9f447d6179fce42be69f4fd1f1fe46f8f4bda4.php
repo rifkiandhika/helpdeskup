@@ -42,6 +42,8 @@
                           </button>
 
                           <hr>
+
+                          
                      
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModallabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
@@ -55,22 +57,25 @@
                               <div class="modal-body">
                                 <form action="/insert_data" method="post" enctype="multipart/form-data">
                                   <?php echo csrf_field(); ?>
+
+                                  <!-- File Keluhan -->
                                   <div class="form-group">
-                                    <label for="keluhan" class="col-form-label">Keluhan</label>
-                                    <input type="text" class="form-control" name="keluhan" id="keluhan" placeholder="Masukan Keluhan">
+                                    <select id="keluhan" class="form-control" name="keluhan">
+                                    <option selected>Kategory</option>
+                                        <option>System</option>
+                                        <option>Jaringan</option>
+                                        <option>Perangkat</option>
+                                    </select> 
                                               </div>
+
+                                              <!-- Keterangan -->
                                               <div class="form-group">
                                                 <label for="message-text" class="col-form-label">Keterangan</label>
-                                                <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Masukan Keterangan dan Tempat"></textarea>
+                                                <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Masukan Keterangan"></textarea>
                                               </div>
 
-                                    <select id="tingkat_kesulitan" class="form-control" name="tingkat_kesulitan">
-                                    <option selected>Tingkat Kesulitan</option>
-                                        <option>Tinggi</option>
-                                        <option>Menengah</option>
-                                        <option>Sedang</option>
-                                    </select> 
-
+                                    
+                                            <!-- Lokasi -->
                                     <select id="tempat" class="form-control mt-4" name="tempat">
                                     <option selected>Masukan Lokasi </option>
                                         <option>Pondok Kacang</option>
@@ -92,11 +97,15 @@
                     </form>
                    </div>
                 </div>
-                    <br>
-                    <br>
+
+                      <div class="container col-sm-3 ml-lg-2">
+                        <input class="form-control fas fa-search" id="myInput" type="text" placeholder="Search..">
+                      </div>
+                  <br>
+                  <br>
                       <tr>
                         <th>#</th>
-                        <th>Keluhan</th>
+                        <th>Kategory</th>
                         <th>Keterangan</th>
                         <th>Tingkat Kesulitan</th>
                         <th>Tempat</th>
@@ -115,11 +124,10 @@
                         <td><?php echo e($Ticket->tingkat_kesulitan); ?></td>
                         <td><?php echo e($Ticket->tempat); ?></td>
 
-                        <?php if($Ticket->status_ticket == "Menunggu"): ?>
-                        <td><a href="/tickets/status/<?php echo e($Ticket->id); ?>/Proses" class="btn btn-warning" onclick="return confirm('Respon laporan?')"><?php echo e($Ticket->status_ticket); ?></a></td>
+                        
 
-                        <?php endif; ?>
-                        <?php if($Ticket->status_ticket == "Direspon"): ?>
+
+                        <!-- <?php if($Ticket->status_ticket == "Direspon"): ?>
                         <td><a href="/tickets/status/<?php echo e($Ticket->id); ?>/Selesai" class="btn btn-primary" onclick="return confirm('Selesaikan laporan?')"><?php echo e($Ticket->status_ticket); ?></a></td>
 
                         <?php endif; ?>
@@ -127,7 +135,7 @@
                         <td><a class="btn btn-success"><?php echo e($Ticket->status_ticket); ?></a></td>
 
                         <?php endif; ?>
-                         
+                          -->
                         <!-- <td><?php echo e($Ticket->konfirmasi); ?></td> -->
                         <td><?php echo e($Ticket->created_at); ?></td>
                         <td>
@@ -144,6 +152,17 @@
                 </div>
             </div>
       </div>
+
+      <script>
+$(data).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myList li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
     </section>
     <?php $__env->stopSection(); ?>
 <?php echo $__env->make("layouts.master", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Helpdesk\resources\views//Ticket/index.blade.php ENDPATH**/ ?>

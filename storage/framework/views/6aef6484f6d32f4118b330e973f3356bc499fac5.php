@@ -68,7 +68,7 @@
 
                         <?php endif; ?>
                         <?php if($Ticket->status_ticket == "Selesai"): ?>
-                        <td><a href="btn btn-success"><?php echo e($Ticket->status_ticket); ?></a></td>
+                        <td><a class="btn btn-success"><?php echo e($Ticket->status_ticket); ?></a></td>
 
                         <?php endif; ?>
                         <!-- <td><?php echo e($Ticket->konfirmasi); ?></td> -->

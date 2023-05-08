@@ -55,21 +55,19 @@
                          <?php echo csrf_field(); ?>
                          <!-- keluhan -->
                          <div class="form-group">
-                           <label for="keluhan" class="col-form-label">Keluhan</label>
-                           <input type="text" class="form-control" name="keluhan" id="keluhan" placeholder="Masukan Keluhan">
+                           <select id="keluhan" class="form-control" name="keluhan">
+                         <option selected>Kategory Masalah</option>
+                            <option>Jaringan</option>
+                            <option>System</option>
+                            <option>Perangkat</option>
+                         </select>
                          </div>
                          <!-- keterangan -->
                          <div class="form-group">
                            <label for="message-text" class="col-form-label">Keterangan</label>
                            <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Masukan Keterangan"></textarea>
                          </div>
-                         <!-- tingkat kesulitan -->
-                         <select id="tingkat_kesulitan" class="form-control" name="tingkat_kesulitan">
-                         <option selected>Tingkat Kesulitan</option>
-                            <option>Tinggi</option>
-                            <option>Menengah</option>
-                            <option>Sedang</option>
-                         </select>
+                         
                          
                          <!-- Tempat Lokasi -->
                          <select id="tempat" class="form-control mt-4" name="tempat">
@@ -98,7 +96,36 @@
                </div>
             </form>
           </div>
+<hr>
+                  <form action="">
+                      <?php echo csrf_field(); ?>
+                      <div class="row mb-3">
+                        <br>
+                      <!-- Filter Kategory -->
+                        <div class="col-sm-3">
+                          <label for="" class="form-label">Kategory</label>
+                          <input type="keluhan" type="text" class="form-control" placeholder="Kategory" value="">
+                        </div>
 
+                        <!-- Filter Tempat -->
+                        <div class="col-sm-3">
+                          <label for="" class="form-label">Tempat</label>
+                          <input type="tempat" type="text" class="form-control" placeholder="Tempat" value="">
+                        </div>
+
+                        <!-- Filter Departemen -->
+                        <div class="col-sm-3">
+                          <label for="" class="form-label">Departemen</label>
+                          <input type="departemen" type="text" class="form-control" placeholder="departemen" value="">
+                        </div>
+
+                        <!-- Tombol Search -->
+                        <div>
+                        <button type="submit" class="btn btn-primary mt-lg-4 ml-2">Cari <i class="fas fa-search"></i></button>
+                        </div>
+
+                      </div>
+                    </form>
 
                     <br>
                     <br>
@@ -111,7 +138,8 @@
                         <th>Status</th>
                         <!-- <th>Konfirmasi</th> -->
                         <th>Tanggal</th>
-                        <th style="width: 150px;">Action</th>
+                        <th>Tindakan Technical</th>
+                       
                       </tr>
                     </thead>
                     <tbody>
@@ -122,12 +150,27 @@
                         <td><?php echo e($Ticket->keterangan); ?></td>
                         <td><?php echo e($Ticket->tingkat_kesulitan); ?></td>
                         <td><?php echo e($Ticket->tempat); ?></td>
-                        <td><?php echo e($Ticket->status_ticket); ?></td>
+
+                        <?php if($Ticket->status_ticket == "Menunggu"): ?>
+                        <td><strong class="btn btn-warning"><?php echo e($Ticket->status_ticket); ?></strong></td>
+
+                        <?php endif; ?>
+                        <?php if($Ticket->status_ticket == "Direspon"): ?>
+                        <td><strong class="btn btn-primary"><?php echo e($Ticket->status_ticket); ?></strong></td>
+
+                        <?php endif; ?>
+                        <?php if($Ticket->status_ticket == "Selesai"): ?>
+                        <td><a class="btn btn-success"><?php echo e($Ticket->status_ticket); ?></a></td>
+
+                        <?php endif; ?>
                         <!-- <td><?php echo e($Ticket->konfirmasi); ?></td> -->
                         <td><?php echo e($Ticket->created_at); ?></td>
+
+
+
                         <td>
                           <ul class="table-action">
-                            <li><a href="/tickets/detail/<?php echo e($Ticket->id); ?>" class="btn btn-success" "><i class="fa fa-eye"></i> Detail</a></li>
+                            
                           </ul>
                         </td>
                       </tr>
