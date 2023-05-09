@@ -115,6 +115,7 @@
                         <th>Status</th>
                         <th>Tingkat Kesulitan</th>
                         <th>Tanggal</th>
+                        <th>Tanggal Selesai</th>
                         <th style="width: 150px;">Action</th>
                       </tr>
                     </thead>
@@ -141,6 +142,7 @@
                         @endif
                         <td>{{$Ticket->tingkat_kesulitan}}</td>
                         <td>{{$Ticket->created_at}}</td>
+                        <td>{{$Ticket->tgl_selesai}}</td>
                         <td>
                           <ul class="table-action">
                             <!-- <li><a href="/tickets/edit/{{$Ticket->id}}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a></li> -->

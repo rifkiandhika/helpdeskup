@@ -23,6 +23,7 @@ class CreateTicketsTable extends Migration
             $table->longText('image')->nullable();
             $table->integer('user_id')->nullable();
             $table->string('divisi')->nullable();
+            $table->string('tgl_selesai')->nullable();
             $table->timestamps();
         });
     }

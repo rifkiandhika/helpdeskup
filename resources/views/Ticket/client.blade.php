@@ -127,11 +127,11 @@
                         <td>{{$Ticket->tempat}}</td>
 
                         @if ($Ticket->status_ticket == "Menunggu")
-                        <td><a href="/tickets/status/{{$Ticket->id}}/Proses" class="btn btn-warning" onclick="return confirm('Respon laporan?')">{{$Ticket->status_ticket}}</a></td>
+                        <td><a class="btn btn-warning" >{{$Ticket->status_ticket}}</a></td>
 
                         @endif
                         @if ($Ticket->status_ticket == "Direspon")
-                        <td><a href="/tickets/status/{{$Ticket->id}}/Selesai" class="btn btn-primary" onclick="return confirm('Selesaikan laporan?')">{{$Ticket->status_ticket}}</a></td>
+                        <td><a class="btn btn-primary" >{{$Ticket->status_ticket}}</a></td>
 
                         @endif
                         @if ($Ticket->status_ticket == "Selesai")
@@ -144,7 +144,7 @@
                           <ul class="table-action">
                             <!-- <li><a href="/tickets/edit/{{$Ticket->id}}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a></li> -->
                             <!-- <li><a href="{{ url('delete/'.$Ticket->id)}}" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus ticket?')"><i class="fa fa-trash" ></i> Delete</a></li> -->
-                            <li><a href="/MenuClient/detailC/{{$Ticket->id}}" class="btn btn-success"><i class="fa fa-eye"></i> Detail</a></li>
+                            <li><a href="MenuClient/detailC/{{$Ticket->id}}" class="btn btn-success"><i class="fa fa-eye"></i> Detail</a></li>
                             @if ($Ticket->image !== null)
                             <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $Ticket->id }}">
                               <i class="fa fa-image"></i> Picture

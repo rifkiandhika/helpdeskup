@@ -75,7 +75,15 @@
                           <input type="text" value="{{$data->keluhan}}" readonly class="form-control"> <br>
                           
                           <label for="" > Keterangan Lengkap </label>
-                         <textarea readonly class="form-control" rows="6">{{$data->keterangan}}</textarea> <br> 
+                         <textarea readonly class="form-control" rows="6">{{$data->keterangan}}</textarea> 
+                         <br> 
+                         <select id="tingkat_kesulitan" class="form-control" name="tingkat_kesulitan">
+                                    <option selected>Tingkat Kesulitan</option>
+                                        <option value="Rendah">Rendah</option>
+                                        <option value="Menengah">Menengah</option>
+                                        <option value="Tinggi">Tinggi</option>
+                                        <option value="Overtake">Overtake</option>
+                                    </select>
 
                         </div>
 
@@ -83,17 +91,17 @@
                         <form action="/tickets/updata/{{$data->id}}" method="post">
                         <div class="col-6">
                         <label for="">Tanggapan Dept IT</label> <br>
-                        <textarea  id="" cols="80" rows="10"></textarea> <br> <br>
+                        <textarea  id="" cols="80" rows="10"></textarea>
+                         <br>
+                        <div class="col-6">
+                          <label for="">Tanggal Selesai</label>
+                          <input type="date" name="tgl_selesai" id="tgl_selesai" class="form-control">
+                        </div>
 
-                        <select id="tingkat_kesulitan" class="form-control" name="tingkat_kesulitan">
-                                    <option selected>Tingkat Kesulitan</option>
-                                        <option value="Tinggi">Tinggi</option>
-                                        <option value="Menengah">Menengah</option>
-                                        <option value="Rendah">Rendah</option>
-                                    </select>
+                        
                                     </div>
 
-                                    <div>
+                                    <div style="padding-top: 8px;">
                                     <ul class="table-action ml-2">
                             
                             @if ($data->image !== null)
@@ -106,7 +114,7 @@
                           </div>
 
                           
-                          <div style="margin-left: 82%; padding-top: 8px;">
+                          <div style="margin-left: 82%; padding-top: 9px;">
                           <a href="/Ticket"><button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Simpan</button></a>
                         </div>
                                     </div>

@@ -16,7 +16,7 @@ class Ticket extends Model
      * @var array
      */
     protected $fillable = [
-       'id', 'keluhan','image','tingkat_kesulitan','created_at','tempat', "status_ticket", "keterangan", "konfirmasi","divisi"
+       'id', 'keluhan','image','tingkat_kesulitan','created_at','tempat', "status_ticket", "keterangan", "konfirmasi","divisi","tgl_selesai"
     ];
     /**
      * The attributes that should be hidden for arrays.
