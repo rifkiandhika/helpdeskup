@@ -1,5 +1,5 @@
-<title>Ticket</title>
-@extends("layouts.master")
+<title>Proses </title>
+@extends("client")
 @section("css")
 <style>
   /* .btn{
@@ -10,17 +10,16 @@
 @endsection
 @section("content")
 <!-- Content Header (Page header) -->
-
 <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Menunggu Respon</h1>
+            <h1 class="m-0">Proses Pengerjaan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-              <li class="breadcrumb-item active">Menunggu Respon</li>
+              <li class="breadcrumb-item active">Proses Pengerjaan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -59,13 +58,11 @@
                         <td>{{$Ticket->tempat}}</td>
 
                         
-                        @if ($Ticket->status_ticket == "Menunggu")
-                        <td><a href="/tickets/status/{{$Ticket->id}}/Proses" class="btn btn-warning" onclick="return confirm('Respon laporan?')">{{$Ticket->status_ticket}}</a></td>
-
-
-                        @endif
+                        
+                        
+                        
                         @if ($Ticket->status_ticket == "Direspon")
-                        <td><a href="/tickets/status/{{$Ticket->id}}/Selesai" class="btn btn-primary" onclick="return confirm('Selesaikan laporan?')">{{$Ticket->status_ticket}}</a></td>
+                        <td><strong class="btn btn-primary" >{{$Ticket->status_ticket}}</strong></td>
 
                         @endif
                         @if ($Ticket->status_ticket == "Selesai")
@@ -84,4 +81,5 @@
             </div>
       </div>
     </section>
+
     @endsection

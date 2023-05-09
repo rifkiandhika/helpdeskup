@@ -1,5 +1,5 @@
-<title>Ticket</title>
-@extends("layouts.master")
+<title>Menunggu Respon</title>
+@extends("client")
 @section("css")
 <style>
   /* .btn{
@@ -10,7 +10,6 @@
 @endsection
 @section("content")
 <!-- Content Header (Page header) -->
-
 <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -60,12 +59,11 @@
 
                         
                         @if ($Ticket->status_ticket == "Menunggu")
-                        <td><a href="/tickets/status/{{$Ticket->id}}/Proses" class="btn btn-warning" onclick="return confirm('Respon laporan?')">{{$Ticket->status_ticket}}</a></td>
-
+                        <td><strong class="btn btn-warning">{{$Ticket->status_ticket}}</strong></td>
 
                         @endif
                         @if ($Ticket->status_ticket == "Direspon")
-                        <td><a href="/tickets/status/{{$Ticket->id}}/Selesai" class="btn btn-primary" onclick="return confirm('Selesaikan laporan?')">{{$Ticket->status_ticket}}</a></td>
+                        <td><strong class="btn btn-primary">{{$Ticket->status_ticket}}</strong></td>
 
                         @endif
                         @if ($Ticket->status_ticket == "Selesai")
@@ -84,4 +82,5 @@
             </div>
       </div>
     </section>
+
     @endsection

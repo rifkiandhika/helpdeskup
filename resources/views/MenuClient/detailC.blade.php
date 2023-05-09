@@ -1,11 +1,10 @@
-<title>Detail</title>
-@extends("layouts.master")
+<title>Detail Ticket</title>
+@extends("client")
 @section("css")
 <style>
   /* .btn{
     color: white;
   } */
-
 
 </style>
 @endsection
@@ -29,9 +28,9 @@
                             
                           From 
                           <address>
-                            <strong>
-                          Divisi : {{$data->divisi}} 
-                          </strong>
+                          <strong>
+                            Divisi : {{$data->divisi}}
+                        </strong> 
                           
                         </address>
                           </div>
@@ -76,50 +75,43 @@
                           
                           <label for="" > Keterangan Lengkap </label>
                          <textarea readonly class="form-control" rows="6">{{$data->keterangan}}</textarea> <br> 
+                         
+                         <div class="col-6">
+                            <label for="">Tingkat Kesulitan</label>
+                            <input type="text" class="form-control" readonly>{{$data->tingkat_kesulitan}}
+                        </div>
 
                         </div>
 
 
                         <form action="/tickets/updata/{{$data->id}}" method="post">
                         <div class="col-6">
-                        <label for="">Tanggapan Dept IT</label> <br>
-                        <textarea  id="" cols="80" rows="10"></textarea> <br> <br>
+                        <label for="" >Tanggapan Dept IT</label> <br>
+                        <textarea  id="" cols="80" rows="10" readonly class="form-control"></textarea> <br> <br>
 
-                        <select id="tingkat_kesulitan" class="form-control" name="tingkat_kesulitan">
-                                    <option selected>Tingkat Kesulitan</option>
-                                        <option value="Tinggi">Tinggi</option>
-                                        <option value="Menengah">Menengah</option>
-                                        <option value="Rendah">Rendah</option>
-                                    </select>
-                                    </div>
+                        
 
-                                    <div>
-                                    <ul class="table-action ml-2">
+                        </div>
+                        <div class="p-2">        
+                        <td>
+                          <ul class="table-action ml-2">
                             
                             @if ($data->image !== null)
                             <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $data->id }}">
                               <i class="fa fa-image"></i> Gambar
                             </button></li>
                             
+                          
                             @endif
-                          </ul>
-                          </div>
-
-                          
-                          <div style="margin-left: 82%; padding-top: 8px;">
-                          <a href="/Ticket"><button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Simpan</button></a>
-                        </div>
-                                    </div>
-
-                       
-
-                        
-                          
                             
-                        </form> 
+                          </ul>
+                        </td>
+                        </div>
+                        </div>
                         
                         
                         
+                        </form>  
 
                         </div>
                         
@@ -150,6 +142,7 @@
 
 
 </form>
+
 
 
 

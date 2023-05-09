@@ -21,7 +21,8 @@ class CreateTicketsTable extends Migration
             $table->string('tingkat_kesulitan')->nullable();
             $table->string('tempat');
             $table->longText('image')->nullable();
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
+            $table->string('divisi')->nullable();
             $table->timestamps();
         });
     }

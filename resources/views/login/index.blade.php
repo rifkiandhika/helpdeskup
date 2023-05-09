@@ -44,9 +44,7 @@
             </div>
           </div>
         </div>
-        <div>
-          <a href="/Register">Create A new Account</a>
-        </div>
+        
         <br>
         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
         <div class="row">

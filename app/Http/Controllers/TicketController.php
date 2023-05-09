@@ -16,7 +16,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $data["tickets"] = Ticket::paginate(10);
+        $data["tickets"] = Ticket::paginate(20);
         return view("/Ticket/index", $data);
     }
 
@@ -25,7 +25,7 @@ class TicketController extends Controller
         $data=$request->validate([
             'keluhan' => 'required|max:255',
             'keterangan' => 'required',
-            'tingkat_kesulitan'=> 'required',
+            'divisi'=> 'required',
             'tempat'=> 'required',
             'image'=> 'image|file'
         ]);
@@ -36,7 +36,7 @@ class TicketController extends Controller
             Ticket::create([
                 'keluhan'=> $request->keluhan,
                 'keterangan'=> $request->keterangan,
-                'tingkat_kesulitan'=> $request->tingkat_kesulitan,
+                'divisi'=> $request->divisi,
                 'tempat'=> $request->tempat,
                 'image'=> $name,
                 'user_id'=>$request->user,
@@ -48,7 +48,7 @@ class TicketController extends Controller
         Ticket::create([
             'keluhan'=> $request->keluhan,
             'keterangan'=> $request->keterangan,
-            'tingkat_kesulitan'=> $request->tingkat_kesulitan,
+            'divisi' => $request-> divisi,
             'tempat'=> $request->tempat,
             'user_id'=>$request->user,
             'created_at'=> now()
@@ -79,86 +79,87 @@ class TicketController extends Controller
 
    
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-       
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function create()
+        {
+        
+        }
+
+        /**
+         * Store a newly created resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @return \Illuminate\Http\Response
+         */
+        public function store(Request $request)
+        {
+            // $input = $request->all();
+            // if($request->hasFile('image'));
+        }
+
+        /**
+         * Display the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function show($id)
+        {
+            //
+        }
+
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function edit($id)
+        {
+            Ticket::find($id);
+            $data = Ticket::find($id);
+        return view('Ticket.edit', compact('data'));
+        }
+
+
+        public function detail($id){
+            $data = Ticket::find($id);
+            $data["tickets"] = Ticket::all();
+            return view('Ticket.detail',$data, compact('data'));
+        }
+
+        public function details($id){
+            $data["users"] = User::all();
+            $data["tickets"] = Ticket::all();
+            $data = User::find($id);
+            $data = Ticket::find($id);
+            return view('Ticket.detail',$data, compact('data'));
+        }
+
+        /**
+         * Update the specified resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function updata(Request $request, $id)
+        {
+            $data = Ticket::find($id);
+            $data->update($request->all());
+            return redirect()->route('/Ticket');
+        }
+
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+
+    
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // $input = $request->all();
-        // if($request->hasFile('image'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        Ticket::find($id);
-        $data = Ticket::find($id);
-      return view('Ticket.edit', compact('data'));
-    }
-
-
-    public function detail($id){
-        $data = Ticket::find($id);
-        $data["tickets"] = Ticket::all();
-        return view('Ticket.detail',$data, compact('data'));
-    }
-
-    public function details($id){
-        $data["users"] = User::all();
-        $data["tickets"] = Ticket::all();
-        $data = User::find($id);
-        $data = Ticket::find($id);
-        return view('Ticket.detail',$data, compact('data'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $data = Ticket::find($id);
-        $data->update($request->all());
-        return redirect()->route('/Ticket');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-   
-}

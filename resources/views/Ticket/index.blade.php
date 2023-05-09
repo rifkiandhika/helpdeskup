@@ -12,27 +12,27 @@
 <!-- Content Header (Page header) -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
-<div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Ticket</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-              <li class="breadcrumb-item active">Ticket</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+        <div class="content-header">
+              <div class="container-fluid">
+                <div class="row mb-2">
+                  <div class="col-sm-6">
+                    <h1 class="m-0">Ticket</h1>
+                  </div><!-- /.col -->
+                  <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                      <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                      <li class="breadcrumb-item active">Ticket</li>
+                    </ol>
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </div><!-- /.container-fluid -->
+            </div>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-            <div class="card">
-                <div class="card-body">
+              <!-- Main content -->
+              <section class="content">
+                <div class="container-fluid">
+                      <div class="card">
+                          <div class="card-body">
                   
 
                    <div>
@@ -72,15 +72,15 @@
                                     </select> 
                                               </div>
                                               <div class="form-group">
-                                                <label for="message-text" class="col-form-label">Keterangan</label>
-                                                <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Masukan Keterangan dan Tempat"></textarea>
+                                                <label for="message-text" class="col-form-label">Deskripsi</label>
+                                                <textarea class="form-control" name="keterangan" id="keterangan" placeholder="Masukan Deskripsi"></textarea>
                                               </div>
 
-                                    <select id="tingkat_kesulitan" class="form-control" name="tingkat_kesulitan">
-                                    <option selected>Tingkat Kesulitan</option>
-                                        <option value="Tinggi">Tinggi</option>
-                                        <option value="Menengah">Menengah</option>
-                                        <option value="Rendah">Rendah</option>
+                                    <select id="divisi" class="form-control" name="divisi">
+                                    <option selected>Divisi</option>
+                                        <option >HRD</option>
+                                        <option >Accounting</option>
+                                        <option >Marketing</option>
                                     </select> 
 
                                     <select id="tempat" class="form-control mt-4" name="tempat">
@@ -109,12 +109,12 @@
                       <tr>
                         <th>#</th>
                         <th>Kategory</th>
-                        <th>Keterangan</th>
-                        <th>Tingkat Kesulitan</th>
+                        <th>Deskripsi</th>
+                        <th>Divisi</th>
                         <th>Tempat</th>
                         <th>Status</th>
+                        <th>Tingkat Kesulitan</th>
                         <th>Tanggal</th>
-                        <th>Pengaju</th>
                         <th style="width: 150px;">Action</th>
                       </tr>
                     </thead>
@@ -124,7 +124,7 @@
                         <td>{{$Ticket->id}}</td>
                         <td>{{$Ticket->keluhan}}</td>
                         <td>{{$Ticket->keterangan}}</td>
-                        <td>{{$Ticket->tingkat_kesulitan}}</td>
+                        <td>{{$Ticket->divisi}}</td>
                         <td>{{$Ticket->tempat}}</td>
 
                         @if ($Ticket->status_ticket == "Menunggu")
@@ -139,8 +139,8 @@
                         <td><a class="btn btn-success">{{$Ticket->status_ticket}}</a></td>
 
                         @endif
+                        <td>{{$Ticket->tingkat_kesulitan}}</td>
                         <td>{{$Ticket->created_at}}</td>
-                        <td>{{$Ticket->users->nama}}</td>
                         <td>
                           <ul class="table-action">
                             <!-- <li><a href="/tickets/edit/{{$Ticket->id}}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a></li> -->
@@ -184,6 +184,7 @@
             </div>
       </div>
     </section>
+    <script></script>
     <script src="
 https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js
 "></script>
