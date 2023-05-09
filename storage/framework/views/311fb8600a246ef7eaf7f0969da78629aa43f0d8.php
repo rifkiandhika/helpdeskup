@@ -47,6 +47,39 @@
           </div>
           <input type="date" name="tglakhir" id="tglakhir" class="form-control">
           <br>
+          <div class="row">
+          <div class="col-4"> 
+            <label for="">Kategory</label><br>
+            <select name="keluhan" id="keluhan" class="form-control">
+              <option select>Masukan Kategory</option>
+              <option>Jaringan</option>
+              <option>System</option>
+              <option>Perangkat</option>
+              <option>Semua</option>
+            </select>
+          </div>
+
+          <div class="col-4"> 
+            <label for="">Departemen</label><br>
+            <select name="divisi" id="divisi" class="form-control">
+              <option select>Masukan Departemen</option>
+                <option>HRD</option>
+                <option>Accounting</option>
+                <option>Marketing</option>
+            </select>
+          </div>
+
+          <div class="col-4">
+            <label for="">Tempat</label><br>
+            <select name="tempat" id="tempat" class="form-control">
+              <option select>Masukan Tempat</option>
+              <option>Meruya</option>
+              <option>Bintaro</option>
+              <option>Cikande</option>
+            </select>
+          </div>
+          </div>
+          <br>
 
           <div class="input-group mb-3">
             
